@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+
+    <title>ChatApp</title>
+  </head>
+  <body class="chat">
+    <form id="message-form">
+      <!-- <input name="message" type="text" placeholder="Message" autofocus autocomplete="off" /> -->
+      <p id="taillines"></p>
+    </form>
+
+    <script src="https://cdn.jsdelivr.net/npm/socket.io-client@2/dist/socket.io.js"></script>
+    <script>
+      var socket = io('http://localhost:8081/tail');
+
+      // connection with server
+      socket.on("connect", function () {
+        console.log("Connected to Server");
+      });
+
+      // message listener from server
+      socket.on("filechanged", function (lines) {
+        console.log(lines.text);
+        document.getElementById("taillines").innerHTML = lines.text;
+      });
+
+      // when disconnected from server
+      socket.on("disconnect", function () {
+        console.log("Disconnect from server");
+      });
+    </script>
+    <style>
+        #taillines {
+            white-space: pre-wrap;
+            border-top-color: black;
+        }
+    </style>
+  </body>
+</html>
