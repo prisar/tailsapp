@@ -1,0 +1,24 @@
+{
+  "name": "tailsapp",
+  "version": "1.0.0",
+  "description": "App for getting realtime updates of a file similar to tail command in unix",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/prisar/tailsapp.git"
+  },
+  "keywords": [
+    "tail",
+    "socket",
+    "file"
+  ],
+  "author": "prisar",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/prisar/tailsapp/issues"
+  },
+  "homepage": "https://github.com/prisar/tailsapp#readme"
+}
