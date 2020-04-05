@@ -8,6 +8,8 @@
   <body class="chat">
     <form id="message-form">
       <!-- <input name="message" type="text" placeholder="Message" autofocus autocomplete="off" /> -->
+      <h3>File Changed At</h3> <div id="changed-at"></div>
+      <h3>Tail</h3>
       <p id="taillines"></p>
     </form>
 
@@ -24,6 +26,7 @@
       socket.on("filechanged", function (lines) {
         console.log(lines.text);
         document.getElementById("taillines").innerHTML = lines.text;
+        document.getElementById("changed-at").innerHTML = lines.changedAt;
       });
 
       // when disconnected from server
@@ -35,6 +38,10 @@
         #taillines {
             white-space: pre-wrap;
             border-top-color: black;
+            width: 900px;
+            border: 15px solid green;
+            padding: 50px;
+            margin: 20px;
         }
     </style>
   </body>

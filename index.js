@@ -14,11 +14,11 @@ app.use('/tail', express.static('public'));
 app.listen(port, () => console.info(`server started on port ${port} (${env})`));
 
 // file name that should be watched
-const file = '../tailsapp.log';
+const file = '~/logs/app.log';
 
 io.of('tail').on('connection', (socket) => {
   fs.watchFile(file, () => {
-    readlastlines.read(file, 5).then((lines) => socket.emit('filechanged', { text: lines }));
+    readlastlines.read(file, 10).then((lines) => socket.emit('filechanged', { text: lines, changedAt: Date().toString() }));
   });
 });
 
